@@ -1,22 +1,11 @@
-const initialState = {
-    messages: [],
-    members: []
-};
-
-function appReducer(state = initialState, action) {
+function messageReducer(state = [], action) {
     switch (action.type) {
         case 'ADD_MESSAGE':
-            return {
-                messages: state.messages.concat([action.message])
-            };
-        case 'UPDATE_MEMBERS':
-            return {
-                members: action.members
-            };
+            return state.concat([action.message]);
         default:
             return state;
     }
 }
 
 
-export default appReducer;
+export default messageReducer;
