@@ -8,9 +8,7 @@ function getEntrySources(sources) {
 
 module.exports = {
     entry: {
-        index: getEntrySources([
-            "./src/index.jsx",
-        ]),
+        index: getEntrySources(["./src/index.jsx"])
     },
     output: {
         publicPath: "http://localhost:8080/",
@@ -28,7 +26,7 @@ module.exports = {
                 test: /\.jsx?$/,
                 loaders: ["babel?presets[]=es2015&presets[]=react"],
                 exclude: /node_modules/
-            },
+            }
         ]
     }
 };
