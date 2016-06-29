@@ -1,5 +1,13 @@
 import io from 'socket.io-client';
+import { addMessage } from '../actions/messageActions.js';
+import { updateMembers } from '../actions/memberActions.js';
+
 const socket = io('jscn-chat.herokuapp.com');
+let appStore = null;
+
+export function init(store) {
+    appStore = store;
+}
 
 export function sendMail(textMessage) {
     const messageEventData = {
@@ -12,9 +20,7 @@ export function sendMail(textMessage) {
 }
 
 export function receiveMessage(message) {
-    let { messages } = this.state;
-    messages.push(message);
-    this.setState(messages);
+    appStore.dispatch(addMessage(message))
 }
 
 export function updateUserName(username) {
@@ -26,12 +32,12 @@ export function updateUserName(username) {
 
 // Gets never called. Server does not send information when user got updated
 export function receiveUserInfo(incomingMessage) {
-    console.log('userInfo', incomingMessage);
+    // console.log('userInfo', incomingMessage);
 }
 
 export function receiveMembers(incomingMessage) {
     let members = incomingMessage.members;
-    this.setState({ members });
+    appStore.dispatch(updateMembers(members))
 }
 
 
