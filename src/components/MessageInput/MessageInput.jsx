@@ -2,7 +2,7 @@ import React from 'react';
 import './MessageInput.scss';
 import { Button, Form, FormControl } from 'react-bootstrap';
 
-import { sendMail } from '../../socket/Messaging.jsx';
+import { sendMail } from '../../socket/Messaging.js';
 
 export default class MessageInput extends React.Component {
     constructor() {
